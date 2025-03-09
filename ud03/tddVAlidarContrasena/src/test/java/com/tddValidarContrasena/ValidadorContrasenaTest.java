@@ -3,7 +3,8 @@ package com.tddValidarContrasena;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 
 public class ValidadorContrasenaTest {
@@ -13,7 +14,7 @@ public class ValidadorContrasenaTest {
     @Test
     void testContraseñaDebeTenerAlMenosOchoCaracteres() {
 
-        ValidadorContraseña validador = new ValidadorContraseña();
+        ValidadorContrasena validador = new ValidadorContrasena();
         assertFalse(validador.esValida("Ab1!")); // Demasiado corta
         assertTrue(validador.esValida("Abcd123!")); // Cumple con la longitud
     }
@@ -24,6 +25,7 @@ public class ValidadorContrasenaTest {
     @CsvSource({"Ab1!,false", "Abcd123!,true"})
     void testContraseñaDebeTenerAlMenosOchoCaracteres(String contraseña, boolean resultadoEsperado) {
 
+        ValidadorContrasena validador = new ValidadorContrasena();
         assertEquals(resultadoEsperado, validador.esValida(contraseña));
     }
 
@@ -33,6 +35,7 @@ public class ValidadorContrasenaTest {
     @CsvSource({"abcdefg1!,false", "Abcdefg1!,true"})
     void testContraseñaDebeContenerUnaMayúscula(String contraseña, boolean resultadoEsperado) {
 
+        ValidadorContrasena validador = new ValidadorContrasena();
         assertEquals(resultadoEsperado, validador.esValida(contraseña));
     }
 
@@ -42,6 +45,7 @@ public class ValidadorContrasenaTest {
     @CsvSource({"ABCDEFG1!,false", "Abcdefg1!,true"})
     void testContraseñaDebeContenerUnaMinúscula(String contraseña, boolean resultadoEsperado) {
 
+        ValidadorContrasena validador = new ValidadorContrasena();
         assertEquals(resultadoEsperado, validador.esValida(contraseña));
     }
 
@@ -51,6 +55,7 @@ public class ValidadorContrasenaTest {
     @CsvSource({"Abcdefgh!,false", "Abcdefg1!,true"})
     void testContraseñaDebeContenerUnNúmero(String contraseña, boolean resultadoEsperado) {
 
+        ValidadorContrasena validador = new ValidadorContrasena();
         assertEquals(resultadoEsperado, validador.esValida(contraseña));
     }
 
@@ -60,6 +65,7 @@ public class ValidadorContrasenaTest {
     @CsvSource({"Abcdefg1,false", "Abcdefg1!,true"})
     void testContraseñaDebeContenerUnCaracterEspecial(String contraseña, boolean resultadoEsperado) {
 
+        ValidadorContrasena validador = new ValidadorContrasena();
         assertEquals(resultadoEsperado, validador.esValida(contraseña));
     }
 
