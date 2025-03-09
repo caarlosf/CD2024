@@ -3,10 +3,11 @@ package com.carlosf;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-public class CalculadoraTest implements ThrowingRunnable{2
+public class TestCalculadora {
 
     private final Calculadora calculadora = new Calculadora();
 
@@ -38,5 +39,16 @@ public class CalculadoraTest implements ThrowingRunnable{2
     @CsvSource({"10,0"})
     void testDividirPorCero(int a, int b) {
         assertThrows(ArithmeticException.class, () -> calculadora.dividir(a, b));
+    }
+
+    @Test
+    void testImprimirEnPdf() {
+        String resultado = calculadora.imprimirEnPdf();
+        assertEquals("Pepe", resultado);
+    }
+
+    @Test
+    void testImprimir() {
+        calculadora.imprimir();
     }
 }
