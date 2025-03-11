@@ -6,19 +6,6 @@
 
 ## 1ª Opción, comando clase e engadir parámetros, terminal
 
-```
-mvn archetype:generate \
-  -DarchetypeGroupId=org.apache.maven.archetypes \
-  -DarchetypeArtifactId=maven-archetype-quickstart \
-  -DarchetypeVersion=1.5 \
-  -DgroupId=com.miempresa \
-  -DartifactId=mi-proyecto \
-  -Dversion=1.0-SNAPSHOT \
-  -Dpackage=com.miempresa.app \
-  -DinteractiveMode=false
-
-```
-
 `mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.5`
 
 
@@ -112,3 +99,9 @@ mvn archetype:generate \
 
 1. # 
 
+
+git add .
+
+git commit -m " "
+
+git push -u origin main

@@ -22,7 +22,7 @@ public class Matricula {
     }
 
     public void setAlumno(Alumno alumno) {
-        this.alumno = alumno;
+        this.alumno = alumno;2
     }
 
     public Modulo getModulo() {
