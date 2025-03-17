@@ -237,9 +237,34 @@ Se puede parar con Ctrl + C.
 
 Continuar apuntes
 
+
+Copiar el comando del paso 2 en terminal, estanto en la carpeta del proyecto, dituado donde está el `pom.xml`, si haces `ls`. tiene que aparecer el `pom.xml`
+
+# IMPORTANTE
+guardar bien el `token`
+
 ---
 ---
 ---
+
+## Para crear un nuevo token en SonaQube
+
+1. Entra a tu servidor SonarQube en:
+```
+http://localhost:9000
+```
+2. Inicia sesión con tu usuario administrador o con un usuario con permisos.
+
+3. Ve a My Account (Mi cuenta) → Security → genera token.
+
+4. Copia exactamente este token y pégalo en la propiedad `sonar.login`.
+
+```
+<properties>
+    <!-- ➡️ Añade aquí tu token de SonarQube (¡IMPORTANTE!) -->
+    <sonar.login>sqp_20d184c40ec394b745be3c92d7cf1b0112b766b3</sonar.login>
+</properties>
+```
 ---
 ---
 ---
@@ -252,3 +277,5 @@ git add .
 git commit -m " "
 
 git push -u origin main
+
+git pull
