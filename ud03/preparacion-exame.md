@@ -97,7 +97,154 @@ mvn archetype:generate \
 >>vscjava.vscode-java-pack
 
 
-1. # 
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+
+
+
+
+ # Instalar Docker Engine en Ubuntu (la versión oficial y completa de Docker) en cualquier versión reciente de Ubuntu.
+  https://docs.docker.com/engine/install/ubuntu/
+
+
+1. ## Actualizar el sistema
+Primero abre una terminal y actualiza los paquetes existentes para evitar conflictos:
+
+```
+sudo apt update
+sudo apt upgrade -y
+```
+
+
+2. ## Desinstalar versiones antiguas (si existen)
+Si anteriormente instalaste Docker con otro método, asegúrate de eliminar posibles versiones antiguas con:
+
+```
+sudo apt remove docker docker-engine docker.io containerd runc
+```
+(No pasa nada si estos paquetes no están instalados actualmente.)
+
+
+3. ## Instalar dependencias básicas
+Instala los paquetes necesarios que permiten usar repositorios HTTPS:
+
+```
+sudo apt install ca-certificates curl gnupg lsb-release -y
+```
+
+
+4. ## Añadir clave GPG oficial de Docker
+Para verificar la autenticidad de los paquetes Docker, añade la clave oficial:
+
+```
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+```
+
+
+5. ## Añadir el repositorio oficial de Docker
+Agrega el repositorio oficial de Docker en tus fuentes de paquetes APT:
+
+```
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
+  https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
+
+
+6. ## Instalar Docker Engine
+Actualiza el índice de paquetes y luego instala Docker Engine junto con otros componentes útiles:
+
+```
+sudo apt update
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+```
+
+* `docker-ce`: Motor Docker, el componente principal.
+* `docker-ce-cli`: Cliente Docker, interfaz de línea de comandos.
+* `containerd.io`: Runtime de contenedores.
+* `docker-buildx-plugin`: Plugin para construir contenedores multiarquitectura.
+* `docker-compose-plugin`: Plugin para usar Docker Compose fácilmente.
+
+
+7. ## Verificar la instalación
+Para comprobar que Docker está correctamente instalado y funcionando, ejecuta:
+
+```
+sudo docker run hello-world
+```
+
+Esto descargará una imagen de prueba y mostrará un mensaje confirmando que Docker está instalado correctamente.
+
+
+8. ## (Opcional) Configuración adicional
+Por defecto, el comando `docker` debe ejecutarse con privilegios administrativos (usando sudo).
+Para ejecutar Docker sin tener que escribir sudo cada vez, añade tu usuario actual al grupo de Docker:
+
+```
+sudo usermod -aG docker $USER
+newgrp docker
+```
+
+Ahora puedes usar Docker sin `sudo`:
+
+```
+docker run hello-world
+```
+
+
+---
+---
+---
+# Continuamos con la instalación de los apuntes
+
+1. ### El primer paso es descargar la versión concreta que queremos utilizar del repositorio oficial de docker. Dentro de las distintas alternativas, elegimos la gratuita en su última versión.
+
+```
+sudo docker pull sonarqube:lts-community
+```
+
+2. ### Una vez tenemos la imagen, podemos crear un contenedor para trabajar sobre él, indicando el nombre (sonar) y el puerto que usaremos para acceder a la aplicación (9000).
+
+```
+sudo docker create -i -t -p 9000:9000 --name sonar sonarqube:lts-community
+```
+
+3. ### Con el contenedor creado, únicamente hay que arrancarlo para poder empezar a usar SonarQube. Recuerda que deberás hacer esto cada vez que quieras correr el contenedor.
+
+```
+sudo docker start --attach -i sonar
+```
+
+Se puede parar con Ctrl + C.
+
+
+---
+---
+---
+
+Continuar apuntes
+
+---
+---
+---
+---
+---
+---
+
+
 
 
 git add .
