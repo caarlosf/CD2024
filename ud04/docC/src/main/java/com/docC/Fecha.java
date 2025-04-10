@@ -1,82 +1,87 @@
 package com.docC;
 
-
 public class Fecha {
 
-private int dia;
+    private int dia;
 
-private int mes;
+    private int mes;
 
-private int anio;
+    private int anio;
 
-public Fecha(int dia, int mes, int anio) {
+    public Fecha(int dia, int mes, int anio) {
 
-this.dia = dia;
+        this.dia = dia;
 
-this.mes = mes;
+        this.mes = mes;
 
-this.anio = anio;
+        this.anio = anio;
 
-}
+    }
 
-public boolean valida () {
+    public boolean valida() {
 
-if (dia < 1 || dia > 31)
+        if (dia < 1 || dia > 31)
 
-return false;
+            return false;
 
-if (mes < 1 || mes > 12)
+        if (mes < 1 || mes > 12)
 
-return false;
+            return false;
 
-// determinamos la cantidad de días del mes:
+        // determinamos la cantidad de días del mes:
 
-int diasMes = 0;
+        int diasMes = 0;
 
-switch (mes) {
+        switch (mes) {
 
-case 1:
+            case 1:
 
-case 3:
+            case 3:
 
-case 5:
+            case 5:
 
-case 7:
+            case 7:
 
-case 8:
+            case 8:
 
-case 10:
+            case 10:
 
-case 12: diasMes = 31; break;
+            case 12:
+                diasMes = 31;
+                break;
 
-case 4:
+            case 4:
 
-case 6:
+            case 6:
 
-case 9:
+            case 9:
 
-case 11 : diasMes = 30; break;
+            case 11:
+                diasMes = 30;
+                break;
 
-case 2 : // verificación de año bisiesto
+            case 2: // verificación de año bisiesto
 
-if ( (anio % 400 == 0) ||
+                if ((anio % 400 == 0) ||
 
-( (anio % 4 == 0) && (anio % 100 != 0) ) )
+                        ((anio % 4 == 0) && (anio % 100 != 0)))
 
-diasMes = 29;
+                    diasMes = 29;
 
-else diasMes = 28;
+                else
+                    diasMes = 28;
 
-break;
+                break;
 
-}
+        }
 
-if (dia > diasMes)
+        if (dia > diasMes)
 
-return false;
+            return false;
 
-else return true;
+        else
+            return true;
 
-}
+    }
 
 }
